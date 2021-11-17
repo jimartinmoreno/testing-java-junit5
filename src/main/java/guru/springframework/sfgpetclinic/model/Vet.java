@@ -20,4 +20,26 @@ public class Vet extends Person {
     public void setSpecialities(Set<Speciality> specialities) {
         this.specialities = specialities;
     }
+
+    @Override
+    public String toString() {
+        return "Vet{" + super.toString() + ", " +
+                "specialities=" + specialities +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Vet vet = (Vet) o;
+
+        return getSpecialities() != null ? getSpecialities().equals(vet.getSpecialities()) : vet.getSpecialities() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getSpecialities() != null ? getSpecialities().hashCode() : 0;
+    }
 }
