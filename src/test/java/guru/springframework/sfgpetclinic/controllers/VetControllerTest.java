@@ -25,7 +25,6 @@ class VetControllerTest {
     private Vet vet;
     private Speciality speciality;
 
-
     @BeforeEach
     void setUp() {
         speciality = new Speciality(1L, "My Specialty");

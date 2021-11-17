@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.ControllerTests;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,14 +17,15 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
  * @DisplayName: Para indicar un nombre personalizado
  * @IndicativeSentencesGeneration funciona para generar los nombres de los test si no se especifican
  * especifitamente un @DisplayName, en caso de indicarlos utiliza este
- * @Tag Tags are used to filter which tests are executed for a given test plan.
+ * @Tag Tags are used to filter which tests are executed for a given test plan. Tambien se puede definir
+ *  en una interfaz que implementen nuestras clases
  */
 
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 @DisplayName("My IndexControllerTest DisplayName")
 @IndicativeSentencesGeneration(separator = " -> ", generator = DisplayNameGenerator.ReplaceUnderscores.class)
-@Tag(value = "Controller")
-class IndexControllerTest {
+//@Tag(value = "Controller")
+class IndexControllerTest implements ControllerTests {
 
     IndexController indexController;
 
@@ -60,14 +62,6 @@ class IndexControllerTest {
         assertThrows(ValueNotFoundException.class, () -> {
             indexController.throwException();
         }, () -> "No se ha lanzado la excepción esperada");
-    }
-
-    @ParameterizedTest(name = "Year {0} is a leap year.")
-    @ValueSource(ints = {2016, 2020, 2048})
-    @Order(4)
-    void if_it_is_one_of_the_following_years(int year) {
-        //fail();
-        assertTrue(year > 2000);
     }
 
     @Disabled("Demo of timeout")
@@ -140,5 +134,18 @@ class IndexControllerTest {
     @EnabledIfSystemProperty(named = "path", matches = ".*java.*")
     @Test
     void tesEnabledIfSystemProperty() {
+    }
+
+    @DisplayName("My Repeated Test")
+    //@RepeatedTest(value = 10, name = "{displayName} : {currentRepetition} - {totalRepetitions}")
+    @RepeatedTest(value = 10, name = RepeatedTest.LONG_DISPLAY_NAME)
+    void myRepeatedTest() {
+        //todo - impl
+    }
+
+    @RepeatedTest(5)
+    void myRepeatedTestWithDI(TestInfo testInfo, RepetitionInfo repetitionInfo) {
+        System.out.println(testInfo.getDisplayName() + ": " + repetitionInfo.getCurrentRepetition());
+
     }
 }

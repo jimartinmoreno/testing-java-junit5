@@ -63,7 +63,7 @@
             <version>3.21.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- hamcrest ya no se usa mucho -->
+        <!-- hamcrest ya no se usa mucho, por si lo necesito en algun proyecto-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
