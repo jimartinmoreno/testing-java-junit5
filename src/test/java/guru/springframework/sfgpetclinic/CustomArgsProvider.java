@@ -8,9 +8,7 @@ import java.util.stream.Stream;
 
 public class CustomArgsProvider implements ArgumentsProvider {
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
-            throws Exception {
-
+    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
                 Arguments.of("Nacho", "Martin", 48),
                 Arguments.of("Hector", "Martin", 47),

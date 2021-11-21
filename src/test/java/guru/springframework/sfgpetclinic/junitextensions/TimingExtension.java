@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 /**
  * Original source - https://junit.org/junit5/docs/current/user-guide/#extensions-lifecycle-callbacks-timing-extension
- *
- * Created by jt on 2018-10-28.
  */
 public class TimingExtension implements BeforeTestExecutionCallback, AfterTestExecutionCallback {
 
@@ -20,7 +18,12 @@ public class TimingExtension implements BeforeTestExecutionCallback, AfterTestEx
 
     @Override
     public void beforeTestExecution(ExtensionContext context) throws Exception {
-        getStore(context).put(START_TIME, System.currentTimeMillis());
+        Method testMethod = context.getRequiredTestMethod();
+        long startTime = System.currentTimeMillis();
+        getStore(context).put(START_TIME, startTime);
+        logger.info(String.format("Method [%s] startTime %s", testMethod.getName(), startTime));
+        logger.info(String.format("Tags: ", context.getTags()));
+        logger.info(String.format("DisplayName: ", context.getDisplayName()));
     }
 
     @Override
@@ -33,6 +36,6 @@ public class TimingExtension implements BeforeTestExecutionCallback, AfterTestEx
     }
 
     private ExtensionContext.Store getStore(ExtensionContext context) {
-        return context.getStore(ExtensionContext.Namespace.create(getClass(), context.getRequiredTestMethod()));
+        return context.getStore(ExtensionContext.Namespace.create(context.getRequiredTestClass(), context.getRequiredTestMethod()));
     }
 }

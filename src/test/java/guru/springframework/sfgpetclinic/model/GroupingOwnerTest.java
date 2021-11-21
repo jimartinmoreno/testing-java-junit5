@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag(value = "Model")
-class OwnerTest {
+class GroupingOwnerTest {
 
     /**
      * En este test vamos a realizar agrupaciones de assertions para evaluar por un lado

@@ -48,7 +48,7 @@ class ParameterizedTests {
 
     @DisplayName("CSV File Test")
     @ParameterizedTest(name = "{displayName} - [{index}] > {arguments}")
-    @CsvFileSource(resources = "/input.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/input.csv", numLinesToSkip = 1) // El fichero está en la carpeta resources
     void csvFileTest(String name, String surname, int age) {
         System.out.println(name + " " + surname + ", Age > " + age);
     }
@@ -61,7 +61,7 @@ class ParameterizedTests {
     }
 
     /**
-     * Methor provider of the fromMethodTest, we can use this method to get data from DB,
+     * Method provider of the fromMethodTest, we can use this method to get data from DB,
      * Rest Service, JMS Queue, etc
      * @return Stream<Arguments>
      */

@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.ControllerTests;
 import guru.springframework.sfgpetclinic.fauxspring.ModelImpl;
 import guru.springframework.sfgpetclinic.model.Speciality;
 import guru.springframework.sfgpetclinic.model.Vet;
@@ -16,8 +17,8 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.*;
 
-@Tag(value = "Controller")
-class VetControllerTest {
+//@Tag(value = "Controller")
+class VetControllerTest implements ControllerTests {
 
     private VetController vetController;
     private VetService vetService;
@@ -50,11 +51,12 @@ class VetControllerTest {
         assertThat(vets.size())
                 .withFailMessage("%s ERROR MESSAGE: ", "size")
                 .isPositive();
-        assertThat(vets.contains(vet))
-                .withFailMessage("%s ERROR MESSAGE: ", "contains is True")
-                .isTrue();
         assertThat(vets)
                 .withFailMessage("%s ERROR MESSAGE: ", "hasSize")
                 .hasSize(1).contains(vet).size().isPositive();
+        assertThat(vets.contains(vet))
+                .withFailMessage("%s ERROR MESSAGE: ", "contains is True")
+                .isTrue();
+
     }
 }

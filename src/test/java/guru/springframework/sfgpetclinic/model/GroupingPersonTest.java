@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag(value = "Model")
-class PersonTest {
+class GroupingPersonTest {
 
     @Test
     void groupedAssertions() {

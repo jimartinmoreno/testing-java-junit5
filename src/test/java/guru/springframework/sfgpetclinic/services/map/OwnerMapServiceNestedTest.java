@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Owner Map Service Test - ")
 @Tag(value = "Service")
-class OwnerMapServiceTest {
+class OwnerMapServiceNestedTest {
 
     OwnerMapService ownerMapService;
     PetTypeService petTypeService;

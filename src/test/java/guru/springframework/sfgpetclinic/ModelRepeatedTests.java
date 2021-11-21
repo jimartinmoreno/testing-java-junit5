@@ -12,8 +12,8 @@ import org.junit.jupiter.api.TestInfo;
 public interface ModelRepeatedTests {
 
     @BeforeEach
-    default void beforeEachConsoleOutputer(TestInfo testInfo, RepetitionInfo repetitionInfo){
-        System.out.println("ModelRepeatedTests  beforeEachConsoleOutputer > Running Test - "
+    default void beforeEachTest(TestInfo testInfo, RepetitionInfo repetitionInfo){
+        System.out.println("ModelRepeatedTests  beforeEachTest > Running Test - "
                 + testInfo.getDisplayName() + " - "
                 + repetitionInfo.getCurrentRepetition() + " | "
                 + repetitionInfo.getTotalRepetitions());
